@@ -15,26 +15,26 @@
             let syllable = '';
 
             for (let i = 0; i < word.length; i++) {
-                syllable += word[i]; // Harfi ekle
+                syllable += word[i]; // Add letter
 
-                // Eğer harf sesli ise, bir sonraki harfi kontrol et
+                // If the letter is a vowel, check the next letter
                 if (vowels.includes(word[i])) {
-                    // Bir sornraki harf varsa ve sessiz harfse
+                    // If the next letter is present and it is a consonant
                     if (i + 1 < word.length && !vowels.includes(word[i + 1])) {
-                        // Eğer sonraki iki harf sessizse, bölmeyi bir kaydır
+                        // If the next two letters are silent, shift the divider by one
                         if (i + 2 < word.length && !vowels.includes(word[i + 2])) {
-                            syllable += word[i + 1]; // Sessiz harfi ekle
-                            i++; // Bir harf atla
+                            syllable += word[i + 1]; // Add consonant
+                            i++; // Skip a letter
                         }
                         syllables.push(syllable);
-                        syllable = ''; // Yeni heceye başla
+                        syllable = ''; // Start a new syllable
                     } else {
                         syllables.push(syllable);
-                        syllable = ''; // Yeni heceye başla
+                        syllable = ''; // Start a new syllable
                     }
                 }
             }
-            // Eğer son kalan bir hece varsa ekle
+            // If there is a last syllable, add it
             if (syllable) {
                 syllables[syllables.length - 1] += syllable;
             }
@@ -45,7 +45,7 @@
         console.log(syllableSeparation('Patika')); // ["pa", "ti", "ka"] (3)
         console.log(syllableSeparation('bilgisayar')); // ["bil", "gi", "sa", "yar"] (4)
         console.log(syllableSeparation('Onur')); // ["o", "nur"] (2)
-        console.log(syllableSeparation('yazılım')); // ["ya", "zı", "lım", "cı"] (4)
+        console.log(syllableSeparation('yazılım')); // ["ya", "zı", "lım"] (3)
     </script>
 </body>
 
